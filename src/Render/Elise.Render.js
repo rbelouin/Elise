@@ -21,7 +21,7 @@ Elise = typeof(Elise) == 'undefined' ? {} : Elise;
 
 Elise.Render = function(wrapper, formatWidth, formatHeight) {
     if (wrapper === undefined)
-        return this.error('You must define a wrapper for the score');
+        return Elise.error('You must define a wrapper for the score');
 
     this.wrapper = wrapper;
     this.formatWidth = parseInt(formatWidth, 10) || 800;
@@ -33,7 +33,6 @@ Elise.Render = function(wrapper, formatWidth, formatHeight) {
 };
 
 Elise.Render.prototype = {
-    error: function(str) { return typeof(console) !== 'undefined' && console !== null ? console.error(str) : alert(str); },
     getFormatWidth: function() { return this.formatWidth; },
     getFormatHeihgt: function() { return this.formatHeight; },
     getWrapper: function() { return this.wrapper; },

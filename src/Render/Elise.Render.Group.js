@@ -19,14 +19,13 @@
 
 Elise.Render.Group = function(render, staffs) {
     if (render === undefined)
-        return this.error('You must set the render object');
+        return Elise.error('You must set the render object');
     this.render = render;
     this.staffs = staffs || [];
     this.cursor = new Elise.Render.Cursor(render);
 };
 
 Elise.Render.Group.prototype = {
-    error: function(str) { return typeof(console) !== 'undefined' && console !== null ? console.error(str) : alert(str); },
     insertStaffEnd: function(staff) { this.staffs.push(staff); },
     insertStaffStart: function(staff) {this.staffs.unshift(staff); }
 };
