@@ -19,7 +19,7 @@
 
 Elise.Render.Staff = function(group, id, measures) {
     if (group === undefined || id === undefined)
-        return this.error('You must set the group and the staff id');
+        return Elise.error('You must set the group and the staff id');
 
     this.group = group;
     this.cursor = null;
@@ -31,7 +31,6 @@ Elise.Render.Staff = function(group, id, measures) {
 };
 
 Elise.Render.Staff.prototype = {
-      error: function(str) { return typeof(console) !== 'undefined' && console !== null ? console.error(str) : alert(str); },
       render: function(cursor) {
         cursor = this.renderLines(cursor);
         return cursor;
