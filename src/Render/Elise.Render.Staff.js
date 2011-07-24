@@ -17,25 +17,27 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-Elise.Render.Staff = function(group, id, measures) {
-    if (group === undefined || id === undefined)
-        return Elise.error('You must set the group and the staff id');
+Elise.Render.Staff = function(render, system, id, measures) {
+    if (system === undefined || id === undefined)
+        return Elise.error('You must set the render, the system and the staff id');
 
-    this.group = group;
+    this.render = render;
+    this.system = system;
     this.cursor = null;
     this.measures = measures || [];
     this.id = id;
 
-    this.document = this.group.getDocument().append('<g class="s' + this.id + '" />')
+    this.document = this.system.getDocument().append('<g class="s' + this.id + '" />')
                                             .children('.s' + this.id);
 };
 
 Elise.Render.Staff.prototype = {
       render: function(cursor) {
-        cursor = this.renderLines(cursor);
-        return cursor;
+          cursor = this.renderLines(cursor);
+          return cursor;
       },
       renderLines: function(cursor) {
-        return cursor;
+          this.document.append('<line x1="350" y1="100" x2="450" y2="100">');
+          return cursor;
       }
 };

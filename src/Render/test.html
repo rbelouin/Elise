@@ -4,14 +4,14 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
         <script type="text/javascript" src="../Elise.js"></script>
         <script type="text/javascript" src="Elise.Render.js"></script>
-        <script type="text/javascript" src="Elise.Render.Group.js"></script>
+        <script type="text/javascript" src="Elise.Render.System.js"></script>
         <script type="text/javascript" src="Elise.Render.Cursor.js"></script>
         <script type="text/javascript" src="Elise.Render.Staff.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
                 var render = new Elise.Render($('body'));
-                var group0 = render.createGroup();
-                var staff0_0 = group0.insertStaffEnd(group0.createStaff());
+                var system = render.createSystem();
+                var staff0_0 = system.insertStaffEnd(system.createStaff());
             });
         </script>
         <style type="text/css">

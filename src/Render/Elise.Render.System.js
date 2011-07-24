@@ -17,9 +17,9 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-Elise.Render.Group = function(render, id, y, staffs) {
+Elise.Render.System = function(render, id, y, staffs) {
     if (render === undefined || id === undefined)
-        return Elise.error('You must set the render object and the group id');
+        return Elise.error('You must set the render object and the system id');
     this.render = render;
 
     this.staffs = staffs || [];
@@ -33,13 +33,19 @@ Elise.Render.Group = function(render, id, y, staffs) {
                                              .children('.g' + this.id);
 };
 
-Elise.Render.Group.prototype = {
+Elise.Render.System.prototype = {
     insertStaffEnd: function(staff) { this.staffs.push(staff); },
     insertStaffStart: function(staff) { this.staffs.unshift(staff); },
     createStaff: function() {
-        var staff = new Elise.Render.Staff(this, this.staffs.length, this.cursor);
+        var staff = new Elise.Render.Staff(this.render, this, this.staffs.length, this.cursor);
         return staff;
     },
+    getY: function() { return this.y; },
+    setY: function(y) { this.y = y; },
     getDocument: function() { return this.document; },
-    getCursor: function() { return this.cursor; }
+    getCursor: function() { return this.cursor; },
+    render: function() {
+        for (var i = 0 ; i < this.staffs.length ; ++i)
+            this.staffs[i].render();    
+    }
 };
