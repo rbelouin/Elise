@@ -17,21 +17,12 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-Elise.Render.Cursor = function(render, x, y) {
-    if (render === undefined)
-        return this.error('You must set the render object');
-    this.render = render;
+Elise = typeof(Elise) == 'undefined' ? {} : Elise;
 
-    this.xOrigin = x;
-    this.yOrigin = y;
-    this.x = x;
-    this.y = y;
+Elise.error = function(str) {
+    return (typeof(console) !== 'undefined' && typeof(console.error) === 'function') ? console.error(str) : alert(str);
 };
 
-Elise.Render.Cursor.prototype = {
-    error: function(str) { return typeof(console) !== 'undefined' && console !== null ? console.error(str) : alert(str); },
-    reset: function() {
-        this.x = this.xOrigin;
-        this.y = this.yOrigin;
-    }
+Elise.log = function(str) {
+    return (typeof(console) !== 'undefined' && typeof(console.log) === 'function') ? console.log(str) : alert(str);
 };
