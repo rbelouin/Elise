@@ -17,6 +17,26 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-Elise.Render.Staff = function(cursor) {
-    
+Elise.Render.Staff = function(group, id, measures) {
+    if (group === undefined || id === undefined)
+        return this.error('You must set the group and the staff id');
+
+    this.group = group;
+    this.cursor = null;
+    this.measures = measures || [];
+    this.id = id;
+
+    this.document = this.group.getDocument().append('<g class="s' + this.id + '" />')
+                                            .children('.s' + this.id);
+};
+
+Elise.Render.Staff.prototype = {
+      error: function(str) { return typeof(console) !== 'undefined' && console !== null ? console.error(str) : alert(str); },
+      render: function(cursor) {
+        cursor = this.renderLines(cursor);
+        return cursor;
+      },
+      renderLines: function(cursor) {
+        return cursor;
+      }
 };

@@ -9,7 +9,8 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 var render = new Elise.Render($('body'));
-                var group1 = new Elise.Render.Group(render);
+                var group0 = render.createGroup();
+                var staff0_0 = group0.insertStaffEnd(group0.createStaff());
             });
         </script>
         <style type="text/css">

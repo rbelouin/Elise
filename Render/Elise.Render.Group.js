@@ -17,16 +17,30 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-Elise.Render.Group = function(render, staffs) {
-    if (render === undefined)
-        return this.error('You must set the render object');
+Elise.Render.Group = function(render, id, y, staffs) {
+    if (render === undefined || id === undefined)
+        return this.error('You must set the render object and the group id');
     this.render = render;
+
     this.staffs = staffs || [];
-    this.cursor = new Elise.Render.Cursor(render);
+    this.x = 0;
+    this.yOrigin = y || y;
+    this.y = y || 0;
+    this.id = id;
+
+    this.cursor = new Elise.Render.Cursor(render, this.x, this.y);
+    this.document = this.render.getDocument().append('<g class="g' + this.id + '" />')
+                                             .children('.g' + this.id);
 };
 
 Elise.Render.Group.prototype = {
     error: function(str) { return typeof(console) !== 'undefined' && console !== null ? console.error(str) : alert(str); },
     insertStaffEnd: function(staff) { this.staffs.push(staff); },
-    insertStaffStart: function(staff) {this.staffs.unshift(staff); }
+    insertStaffStart: function(staff) { this.staffs.unshift(staff); },
+    createStaff: function() {
+        var staff = new Elise.Render.Staff(this, this.staffs.length, this.cursor);
+        return staff;
+    },
+    getDocument: function() { return this.document; },
+    getCursor: function() { return this.cursor; }
 };
