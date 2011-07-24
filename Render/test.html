@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en-us">
+    <head>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+        <script type="text/javascript" src="Elise.Render.js"></script>
+        <script type="text/javascript" src="Elise.Render.Group.js"></script>
+        <script type="text/javascript" src="Elise.Render.Cursor.js"></script>
+        <script type="text/javascript" src="Elise.Render.Staff.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var render = new Elise.Render($('#wrapper-score'));
+                var group1 = new Elise.Render.Group(render);
+            });
+        </script>
+    </head>
+    <body>
+        <div id="wrapper-score">
+    </body>
+</html>
