@@ -22,11 +22,20 @@ Elise = typeof(Elise) == 'undefined' ? {} : Elise;
 Elise.Render = function(wrapper, formatWidth, formatHeight) {
     if (wrapper === undefined)
         return this.error('You must define a wrapper for the score');
+
     this.wrapper = wrapper;
-    this.formatWidth = formatWidth || 800;
-    this.formatHeight = formatHeight || 600;
+    this.formatWidth = parseInt(formatWidth, 10) || 800;
+    this.formatHeight = parseInt(formatHeight, 10) || 600;
+    
+    this.wrapper.empty()
+                .append('<svg id="elise-render" width="' + this.formatWidth + 'px" height="' + this.formatHeight + 'px" />');
+    this.document = this.wrapper.children('svg#elise-render');
 };
 
 Elise.Render.prototype = {
-    error: function(str) { return typeof(console) !== 'undefined' && console !== null ? console.error(str) : alert(str); }
+    error: function(str) { return typeof(console) !== 'undefined' && console !== null ? console.error(str) : alert(str); },
+    getFormatWidth: function() { return this.formatWidth; },
+    getFormatHeihgt: function() { return this.formatHeight; },
+    getWrapper: function() { return this.wrapper; },
+    getDocument: function() { return this.document; }
 };
