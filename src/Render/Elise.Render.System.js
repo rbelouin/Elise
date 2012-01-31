@@ -46,6 +46,6 @@ Elise.Render.System.prototype = {
     getCursor: function() { return this.cursor; },
     render: function() {
         for (var i = 0 ; i < this.staffs.length ; ++i)
-            this.staffs[i].render();    
+            this.staffs[i].render();
     }
 };
